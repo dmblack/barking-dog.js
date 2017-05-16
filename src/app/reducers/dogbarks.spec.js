@@ -24,7 +24,8 @@ describe('dogbarks reducer', () => {
       {
         text: 'Run the tests',
         completed: false,
-        id: 0
+        id: 0,
+        date: new Date()
       }
     ]);
 
@@ -33,7 +34,8 @@ describe('dogbarks reducer', () => {
         {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          date: new Date()
         }
       ], {
         type: types.ADD_DOGBARK,
@@ -43,11 +45,13 @@ describe('dogbarks reducer', () => {
       {
         text: 'Run the tests',
         completed: false,
-        id: 1
+        id: 1,
+        date: new Date()
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        date: new Date()
       }
     ]);
 
@@ -56,11 +60,13 @@ describe('dogbarks reducer', () => {
         {
           text: 'Run the tests',
           completed: false,
-          id: 1
+          id: 1,
+          date: new Date()
         }, {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          date: new Date()
         }
       ], {
         type: types.ADD_DOGBARK,
@@ -70,15 +76,18 @@ describe('dogbarks reducer', () => {
       {
         text: 'Fix the tests',
         completed: false,
-        id: 2
+        id: 2,
+        date: new Date()
       }, {
         text: 'Run the tests',
         completed: false,
-        id: 1
+        id: 1,
+        date: new Date()
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        date: new Date()
       }
     ]);
   });
@@ -114,11 +123,13 @@ describe('dogbarks reducer', () => {
         {
           text: 'Run the tests',
           completed: false,
-          id: 1
+          id: 1,
+          date: new Date()
         }, {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          date: new Date()
         }
       ], {
         type: types.EDIT_DOGBARK,
@@ -129,11 +140,13 @@ describe('dogbarks reducer', () => {
       {
         text: 'Fix the tests',
         completed: false,
-        id: 1
+        id: 1,
+        date: new Date()
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        date: new Date()
       }
     ]);
   });
@@ -262,22 +275,26 @@ describe('dogbarks reducer', () => {
         {
           id: 0,
           completed: false,
-          text: 'Use Redux'
+          text: 'Use Redux',
+          date: new Date()
         }, {
           id: 1,
           completed: false,
-          text: 'Write tests'
+          text: 'Write tests',
+          date: new Date()
         }
       ])
     ).toEqual([
       {
         text: 'Write more tests',
         completed: false,
-        id: 2
+        id: 2,
+        date: new Date()
       }, {
         text: 'Write tests',
         completed: false,
-        id: 1
+        id: 1,
+        date: new Date()
       }
     ]);
   });

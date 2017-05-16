@@ -15,7 +15,8 @@ export default function dogbarks(state = initialState, action) {
         {
           id: state.reduce((maxId, dogbark) => Math.max(dogbark.id, maxId), -1) + 1,
           completed: false,
-          text: action.text
+          text: action.text,
+          date: new Date()
         },
         ...state
       ];
@@ -28,7 +29,7 @@ export default function dogbarks(state = initialState, action) {
     case EDIT_DOGBARK:
       return state.map(dogbark =>
         dogbark.id === action.id ?
-          Object.assign({}, dogbark, {text: action.text}) :
+          Object.assign({}, dogbark, {text: action.text, date: new Date()}) :
           dogbark
       );
 

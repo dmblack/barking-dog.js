@@ -8,7 +8,8 @@ function setup(editing = false) {
     dogbark: {
       id: 0,
       text: 'Use Redux',
-      completed: false
+      completed: false,
+      date: new Date()
     },
     editDogbark: jasmine.createSpy(),
     deleteDogbark: jasmine.createSpy(),

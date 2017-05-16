@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import Moment from 'react-moment';
 import classnames from 'classnames';
 import DogbarkTextInput from './DogbarkTextInput';
 
@@ -64,6 +65,9 @@ class DogbarkItem extends Component {
           <button
             className="destroy"
             onClick={this.handleClick}
+            />
+          <Moment
+            date={dogbark.date}
             />
         </div>
       );
