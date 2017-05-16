@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from 'react';
-import TodoTextInput from './TodoTextInput';
+import DogbarkTextInput from './DogbarkTextInput';
 
 class Header extends Component {
   constructor(props) {
@@ -9,16 +9,16 @@ class Header extends Component {
 
   handleSave(text) {
     if (text.length !== 0) {
-      this.props.addTodo(text);
+      this.props.addDogbark(text);
     }
   }
 
   render() {
     return (
       <header className="header">
-        <h1>todos</h1>
-        <TodoTextInput
-          newTodo
+        <h1>dogbarks</h1>
+        <DogbarkTextInput
+          newDogbark
           onSave={this.handleSave}
           placeholder="What needs to be done?"
           />
@@ -28,7 +28,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  addTodo: PropTypes.func.isRequired
+  addDogbark: PropTypes.func.isRequired
 };
 
 export default Header;

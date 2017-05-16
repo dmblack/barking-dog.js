@@ -1,12 +1,12 @@
 import React, {Component, PropTypes} from 'react';
-import TodoItem from './TodoItem';
+import DogbarkItem from './DogbarkItem';
 import Footer from './Footer';
-import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/TodoFilters';
+import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/DogbarkFilters';
 
-const TODO_FILTERS = {
+const DOGBARK_FILTERS = {
   [SHOW_ALL]: () => true,
-  [SHOW_ACTIVE]: todo => !todo.completed,
-  [SHOW_COMPLETED]: todo => todo.completed
+  [SHOW_ACTIVE]: dogbark => !dogbark.completed,
+  [SHOW_COMPLETED]: dogbark => dogbark.completed
 };
 
 class MainSection extends Component {
@@ -31,13 +31,13 @@ class MainSection extends Component {
   }
 
   renderToggleAll(completedCount) {
-    const {todos} = this.props;
-    if (todos.length > 0) {
+    const {dogbarks} = this.props;
+    if (dogbarks.length > 0) {
       return (
         <input
           className="toggle-all"
           type="checkbox"
-          checked={completedCount === todos.length}
+          checked={completedCount === dogbarks.length}
           onChange={this.handleCompleteAll}
           />
       );
@@ -45,11 +45,11 @@ class MainSection extends Component {
   }
 
   renderFooter(completedCount) {
-    const {todos} = this.props;
+    const {dogbarks} = this.props;
     const {filter} = this.state;
-    const activeCount = todos.length - completedCount;
+    const activeCount = dogbarks.length - completedCount;
 
-    if (todos.length) {
+    if (dogbarks.length) {
       return (
         <Footer
           completedCount={completedCount}
@@ -63,23 +63,23 @@ class MainSection extends Component {
   }
 
   render() {
-    const {todos, actions} = this.props;
+    const {dogbarks, actions} = this.props;
     const {filter} = this.state;
 
-    const filteredTodos = todos.filter(TODO_FILTERS[filter]);
-    const completedCount = todos.reduce((count, todo) =>
-      todo.completed ? count + 1 : count,
+    const filteredDogbarks = dogbarks.filter(DOGBARK_FILTERS[filter]);
+    const completedCount = dogbarks.reduce((count, dogbark) =>
+      dogbark.completed ? count + 1 : count,
       0
     );
 
     return (
       <section className="main">
         {this.renderToggleAll(completedCount)}
-        <ul className="todo-list">
-          {filteredTodos.map(todo =>
-            <TodoItem
-              key={todo.id}
-              todo={todo}
+        <ul className="dogbark-list">
+          {filteredDogbarks.map(dogbark =>
+            <DogbarkItem
+              key={dogbark.id}
+              dogbark={dogbark}
               {...actions}
               />
           )}
@@ -91,7 +91,7 @@ class MainSection extends Component {
 }
 
 MainSection.propTypes = {
-  todos: PropTypes.array.isRequired,
+  dogbarks: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 

@@ -1,6 +1,6 @@
 import React, {PropTypes, Component} from 'react';
 import classnames from 'classnames';
-import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/TodoFilters';
+import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/DogbarkFilters';
 
 const FILTER_TITLES = {
   [SHOW_ALL]: 'All',
@@ -9,12 +9,12 @@ const FILTER_TITLES = {
 };
 
 class Footer extends Component {
-  renderTodoCount() {
+  renderDogbarkCount() {
     const {activeCount} = this.props;
     const itemWord = activeCount === 1 ? 'item' : 'items';
 
     return (
-      <span className="todo-count">
+      <span className="dogbark-count">
         <strong>{activeCount || 'No'}</strong> {itemWord} left
       </span>
     );
@@ -53,7 +53,7 @@ class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-        {this.renderTodoCount()}
+        {this.renderDogbarkCount()}
         <ul className="filters">
           {[SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED].map(filter =>
             <li key={filter}>

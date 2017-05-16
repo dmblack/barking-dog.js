@@ -1,24 +1,24 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import TodoItem from './TodoItem';
-import TodoTextInput from './TodoTextInput';
+import DogbarkItem from './DogbarkItem';
+import DogbarkTextInput from './DogbarkTextInput';
 
 function setup(editing = false) {
   const props = {
-    todo: {
+    dogbark: {
       id: 0,
       text: 'Use Redux',
       completed: false
     },
-    editTodo: jasmine.createSpy(),
-    deleteTodo: jasmine.createSpy(),
-    completeTodo: jasmine.createSpy()
+    editDogbark: jasmine.createSpy(),
+    deleteDogbark: jasmine.createSpy(),
+    completeDogbark: jasmine.createSpy()
   };
 
   const renderer = TestUtils.createRenderer();
 
   renderer.render(
-    <TodoItem {...props}/>
+    <DogbarkItem {...props}/>
   );
 
   let output = renderer.getRenderOutput();
@@ -37,7 +37,7 @@ function setup(editing = false) {
 }
 
 describe('components', () => {
-  describe('TodoItem', () => {
+  describe('DogbarkItem', () => {
     it('initial render', () => {
       const {output} = setup();
 
@@ -61,18 +61,18 @@ describe('components', () => {
       expect(button.props.className).toBe('destroy');
     });
 
-    it('input onChange should call completeTodo', () => {
+    it('input onChange should call completeDogbark', () => {
       const {output, props} = setup();
       const input = output.props.children.props.children[0];
       input.props.onChange({});
-      expect(props.completeTodo).toHaveBeenCalledWith(0);
+      expect(props.completeDogbark).toHaveBeenCalledWith(0);
     });
 
-    it('button onClick should call deleteTodo', () => {
+    it('button onClick should call deleteDogbark', () => {
       const {output, props} = setup();
       const button = output.props.children.props.children[2];
       button.props.onClick({});
-      expect(props.deleteTodo).toHaveBeenCalledWith(0);
+      expect(props.deleteDogbark).toHaveBeenCalledWith(0);
     });
 
     it('label onDoubleClick should put component in edit state', () => {
@@ -91,24 +91,24 @@ describe('components', () => {
       expect(output.props.className).toBe('editing');
 
       const input = output.props.children;
-      expect(input.type).toBe(TodoTextInput);
+      expect(input.type).toBe(DogbarkTextInput);
       expect(input.props.text).toBe('Use Redux');
       expect(input.props.editing).toBe(true);
     });
 
-    it('TodoTextInput onSave should call editTodo', () => {
+    it('DogbarkTextInput onSave should call editDogbark', () => {
       const {output, props} = setup(true);
       output.props.children.props.onSave('Use Redux');
-      expect(props.editTodo).toHaveBeenCalledWith(0, 'Use Redux');
+      expect(props.editDogbark).toHaveBeenCalledWith(0, 'Use Redux');
     });
 
-    it('TodoTextInput onSave should call deleteTodo if text is empty', () => {
+    it('DogbarkTextInput onSave should call deleteDogbark if text is empty', () => {
       const {output, props} = setup(true);
       output.props.children.props.onSave('');
-      expect(props.deleteTodo).toHaveBeenCalledWith(0);
+      expect(props.deleteDogbark).toHaveBeenCalledWith(0);
     });
 
-    it('TodoTextInput onSave should exit component from edit state', () => {
+    it('DogbarkTextInput onSave should exit component from edit state', () => {
       const {output, renderer} = setup(true);
       output.props.children.props.onSave('Use Redux');
       const updated = renderer.getRenderOutput();

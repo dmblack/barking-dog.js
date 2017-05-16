@@ -1,7 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import Footer from './Footer';
-import {SHOW_ALL, SHOW_ACTIVE} from '../constants/TodoFilters';
+import {SHOW_ALL, SHOW_ACTIVE} from '../constants/DogbarkFilters';
 
 function setup(propOverrides) {
   const props = Object.assign({
@@ -78,13 +78,13 @@ describe('components', () => {
       expect(props.onShow).toHaveBeenCalledWith(SHOW_ACTIVE);
     });
 
-    it('shouldnt show clear button when no completed todos', () => {
+    it('shouldnt show clear button when no completed dogbarks', () => {
       const {output} = setup({completedCount: 0});
       const [, , clear] = output.props.children;
       expect(clear).toBe(undefined);
     });
 
-    it('should render clear button when completed todos', () => {
+    it('should render clear button when completed dogbarks', () => {
       const {output} = setup({completedCount: 1});
       const [, , clear] = output.props.children;
       expect(clear.type).toBe('button');

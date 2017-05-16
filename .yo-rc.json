@@ -10,7 +10,7 @@
       "resolved": "/home/dustynblackmore/.nvm/versions/node/v7.10.0/lib/node_modules/generator-fountain-webapp/node_modules/generator-fountain-react/generators/app/index.js",
       "namespace": "fountain-react:app",
       "_": [],
-      "sample": "todoMVC",
+      "sample": "dogbarkMVC",
       "router": "router"
     }
   }

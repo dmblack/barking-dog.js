@@ -1,10 +1,10 @@
-import todos from './todos';
+import dogbarks from './dogbarks';
 import * as types from '../constants/ActionTypes';
 
-describe('todos reducer', () => {
+describe('dogbarks reducer', () => {
   it('should handle initial state', () => {
     expect(
-      todos(undefined, {})
+      dogbarks(undefined, {})
     ).toEqual([
       {
         text: 'Use Redux',
@@ -14,10 +14,10 @@ describe('todos reducer', () => {
     ]);
   });
 
-  it('should handle ADD_TODO', () => {
+  it('should handle ADD_DOGBARK', () => {
     expect(
-      todos([], {
-        type: types.ADD_TODO,
+      dogbarks([], {
+        type: types.ADD_DOGBARK,
         text: 'Run the tests'
       })
     ).toEqual([
@@ -29,14 +29,14 @@ describe('todos reducer', () => {
     ]);
 
     expect(
-      todos([
+      dogbarks([
         {
           text: 'Use Redux',
           completed: false,
           id: 0
         }
       ], {
-        type: types.ADD_TODO,
+        type: types.ADD_DOGBARK,
         text: 'Run the tests'
       })
     ).toEqual([
@@ -52,7 +52,7 @@ describe('todos reducer', () => {
     ]);
 
     expect(
-      todos([
+      dogbarks([
         {
           text: 'Run the tests',
           completed: false,
@@ -63,7 +63,7 @@ describe('todos reducer', () => {
           id: 0
         }
       ], {
-        type: types.ADD_TODO,
+        type: types.ADD_DOGBARK,
         text: 'Fix the tests'
       })
     ).toEqual([
@@ -83,9 +83,9 @@ describe('todos reducer', () => {
     ]);
   });
 
-  it('should handle DELETE_TODO', () => {
+  it('should handle DELETE_DOGBARK', () => {
     expect(
-      todos([
+      dogbarks([
         {
           text: 'Run the tests',
           completed: false,
@@ -96,7 +96,7 @@ describe('todos reducer', () => {
           id: 0
         }
       ], {
-        type: types.DELETE_TODO,
+        type: types.DELETE_DOGBARK,
         id: 1
       })
     ).toEqual([
@@ -108,9 +108,9 @@ describe('todos reducer', () => {
     ]);
   });
 
-  it('should handle EDIT_TODO', () => {
+  it('should handle EDIT_DOGBARK', () => {
     expect(
-      todos([
+      dogbarks([
         {
           text: 'Run the tests',
           completed: false,
@@ -121,7 +121,7 @@ describe('todos reducer', () => {
           id: 0
         }
       ], {
-        type: types.EDIT_TODO,
+        type: types.EDIT_DOGBARK,
         text: 'Fix the tests',
         id: 1
       })
@@ -138,9 +138,9 @@ describe('todos reducer', () => {
     ]);
   });
 
-  it('should handle COMPLETE_TODO', () => {
+  it('should handle COMPLETE_DOGBARK', () => {
     expect(
-      todos([
+      dogbarks([
         {
           text: 'Run the tests',
           completed: false,
@@ -151,7 +151,7 @@ describe('todos reducer', () => {
           id: 0
         }
       ], {
-        type: types.COMPLETE_TODO,
+        type: types.COMPLETE_DOGBARK,
         id: 1
       })
     ).toEqual([
@@ -169,7 +169,7 @@ describe('todos reducer', () => {
 
   it('should handle COMPLETE_ALL', () => {
     expect(
-      todos([
+      dogbarks([
         {
           text: 'Run the tests',
           completed: true,
@@ -194,9 +194,9 @@ describe('todos reducer', () => {
       }
     ]);
 
-    // Unmark if all todos are currently completed
+    // Unmark if all dogbarks are currently completed
     expect(
-      todos([
+      dogbarks([
         {
           text: 'Run the tests',
           completed: true,
@@ -224,7 +224,7 @@ describe('todos reducer', () => {
 
   it('should handle CLEAR_COMPLETED', () => {
     expect(
-      todos([
+      dogbarks([
         {
           text: 'Run the tests',
           completed: true,
@@ -250,15 +250,15 @@ describe('todos reducer', () => {
     expect(
       [
         {
-          type: types.COMPLETE_TODO,
+          type: types.COMPLETE_DOGBARK,
           id: 0
         }, {
           type: types.CLEAR_COMPLETED
         }, {
-          type: types.ADD_TODO,
+          type: types.ADD_DOGBARK,
           text: 'Write more tests'
         }
-      ].reduce(todos, [
+      ].reduce(dogbarks, [
         {
           id: 0,
           completed: false,

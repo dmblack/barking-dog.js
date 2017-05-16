@@ -1,6 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import TodoTextInput from './TodoTextInput';
+import DogbarkTextInput from './DogbarkTextInput';
 
 function setup(propOverrides) {
   const props = Object.assign({
@@ -8,13 +8,13 @@ function setup(propOverrides) {
     text: 'Use Redux',
     placeholder: 'What needs to be done?',
     editing: false,
-    newTodo: false
+    newDogbark: false
   }, propOverrides);
 
   const renderer = TestUtils.createRenderer();
 
   renderer.render(
-    <TodoTextInput {...props}/>
+    <DogbarkTextInput {...props}/>
   );
 
   let output = renderer.getRenderOutput();
@@ -29,7 +29,7 @@ function setup(propOverrides) {
 }
 
 describe('components', () => {
-  describe('TodoTextInput', () => {
+  describe('DogbarkTextInput', () => {
     it('should render correctly', () => {
       const {output} = setup();
       expect(output.props.placeholder).toEqual('What needs to be done?');
@@ -42,9 +42,9 @@ describe('components', () => {
       expect(output.props.className).toEqual('edit');
     });
 
-    it('should render correctly when newTodo=true', () => {
-      const {output} = setup({newTodo: true});
-      expect(output.props.className).toEqual('new-todo');
+    it('should render correctly when newDogbark=true', () => {
+      const {output} = setup({newDogbark: true});
+      expect(output.props.className).toEqual('new-dogbark');
     });
 
     it('should update value on change', () => {
@@ -60,8 +60,8 @@ describe('components', () => {
       expect(props.onSave).toHaveBeenCalledWith('Use Redux');
     });
 
-    it('should reset state on return key press if newTodo', () => {
-      const {output, renderer} = setup({newTodo: true});
+    it('should reset state on return key press if newDogbark', () => {
+      const {output, renderer} = setup({newDogbark: true});
       output.props.onKeyDown({which: 13, target: {value: 'Use Redux'}});
       const updated = renderer.getRenderOutput();
       expect(updated.props.value).toEqual('');
@@ -73,8 +73,8 @@ describe('components', () => {
       expect(props.onSave).toHaveBeenCalledWith('Use Redux');
     });
 
-    it('shouldnt call onSave on blur if newTodo', () => {
-      const {output, props} = setup({newTodo: true});
+    it('shouldnt call onSave on blur if newDogbark', () => {
+      const {output, props} = setup({newDogbark: true});
       output.props.onBlur({target: {value: 'Use Redux'}});
       expect(props.onSave.calls.count()).toBe(0);
     });

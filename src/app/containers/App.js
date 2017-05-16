@@ -3,18 +3,18 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
-import * as TodoActions from '../actions/index';
+import * as DogbarkActions from '../actions/index';
 
 class App extends Component {
   render() {
-    const {todos, actions} = this.props;
+    const {dogbarks, actions} = this.props;
     return (
       <div>
         <Header
-          addTodo={actions.addTodo}
+          addDogbark={actions.addDogbark}
           />
         <MainSection
-          todos={todos}
+          dogbarks={dogbarks}
           actions={actions}
           />
       </div>
@@ -23,19 +23,19 @@ class App extends Component {
 }
 
 App.propTypes = {
-  todos: PropTypes.array.isRequired,
+  dogbarks: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
+    dogbarks: state.dogbarks
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators(DogbarkActions, dispatch)
   };
 }
 

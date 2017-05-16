@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import classnames from 'classnames';
 
-class TodoTextInput extends Component {
+class DogbarkTextInput extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -16,7 +16,7 @@ class TodoTextInput extends Component {
     const text = e.target.value.trim();
     if (e.which === 13) {
       this.props.onSave(text);
-      if (this.props.newTodo) {
+      if (this.props.newDogbark) {
         this.setState({text: ''});
       }
     }
@@ -27,7 +27,7 @@ class TodoTextInput extends Component {
   }
 
   handleBlur(e) {
-    if (!this.props.newTodo) {
+    if (!this.props.newDogbark) {
       this.props.onSave(e.target.value);
     }
   }
@@ -37,8 +37,8 @@ class TodoTextInput extends Component {
       <input
         className={
           classnames({
-            'edit': this.props.editing,
-            'new-todo': this.props.newTodo
+            edit: this.props.editing,
+            'new-dogbark': this.props.newDogbark
           })}
         type="text"
         placeholder={this.props.placeholder}
@@ -52,12 +52,12 @@ class TodoTextInput extends Component {
   }
 }
 
-TodoTextInput.propTypes = {
+DogbarkTextInput.propTypes = {
   onSave: PropTypes.func.isRequired,
   text: PropTypes.string,
   placeholder: PropTypes.string,
   editing: PropTypes.bool,
-  newTodo: PropTypes.bool
+  newDogbark: PropTypes.bool
 };
 
-export default TodoTextInput;
+export default DogbarkTextInput;

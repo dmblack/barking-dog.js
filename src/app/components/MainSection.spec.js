@@ -1,13 +1,13 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import MainSection from './MainSection';
-import TodoItem from './TodoItem';
+import DogbarkItem from './DogbarkItem';
 import Footer from './Footer';
-import {SHOW_ALL, SHOW_COMPLETED} from '../constants/TodoFilters';
+import {SHOW_ALL, SHOW_COMPLETED} from '../constants/DogbarkFilters';
 
 function setup(propOverrides) {
   const props = Object.assign({
-    todos: [
+    dogbarks: [
       {
         text: 'Use Redux',
         completed: false,
@@ -19,9 +19,9 @@ function setup(propOverrides) {
       }
     ],
     actions: {
-      editTodo: jasmine.createSpy(),
-      deleteTodo: jasmine.createSpy(),
-      completeTodo: jasmine.createSpy(),
+      editDogbark: jasmine.createSpy(),
+      deleteDogbark: jasmine.createSpy(),
+      completeDogbark: jasmine.createSpy(),
       completeAll: jasmine.createSpy(),
       clearCompleted: jasmine.createSpy()
     }
@@ -55,9 +55,9 @@ describe('components', () => {
         expect(toggle.props.checked).toBe(false);
       });
 
-      it('should be checked if all todos completed', () => {
+      it('should be checked if all dogbarks completed', () => {
         const {output} = setup({
-          todos: [
+          dogbarks: [
             {
               text: 'Use Redux',
               completed: true,
@@ -104,15 +104,15 @@ describe('components', () => {
       });
     });
 
-    describe('todo list', () => {
+    describe('dogbark list', () => {
       it('should render', () => {
         const {output, props} = setup();
         const [, list] = output.props.children;
         expect(list.type).toBe('ul');
         expect(list.props.children.length).toBe(2);
         list.props.children.forEach((item, i) => { // eslint-disable-line max-nested-callbacks
-          expect(item.type).toBe(TodoItem);
-          expect(item.props.todo).toBe(props.todos[i]);
+          expect(item.type).toBe(DogbarkItem);
+          expect(item.props.dogbark).toBe(props.dogbarks[i]);
         });
       });
 
@@ -123,7 +123,7 @@ describe('components', () => {
         const updated = renderer.getRenderOutput();
         const [, updatedList] = updated.props.children;
         expect(updatedList.props.children.length).toBe(1);
-        expect(updatedList.props.children[0].props.todo).toBe(props.todos[1]);
+        expect(updatedList.props.children[0].props.dogbark).toBe(props.dogbarks[1]);
       });
     });
   });
